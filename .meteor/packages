@@ -27,3 +27,5 @@ momentjs:moment
 percolate:synced-cron
 fullcalendar:fullcalendar
 practicalmeteor:chai
+autopublish
+insecure

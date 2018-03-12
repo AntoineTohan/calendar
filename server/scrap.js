@@ -1,6 +1,5 @@
 import { Meteor } from 'meteor/meteor';
 import { HTTP } from 'meteor/http'
-import './password.js';
 import moment from 'moment';
 import puppeteer from 'puppeteer';
 import devices from 'puppeteer/DeviceDescriptors';
@@ -33,9 +32,9 @@ async function InstanceBrowser() {
 	} catch (e) {
 		console.log('Error Creation Chromium', e);
     }
-    console.log('Your credential '+login, pass);
-    await page.type('[name="login"]', login);
-    await page.type('[name="pass"]', pass);
+    console.log('Your credential ' + Meteor.settings.private.login, Meteor.settings.private.password);
+    await page.type('[name="login"]', Meteor.settings.private.login);
+    await page.type('[name="pass"]', Meteor.settings.private.password);
     await page.waitFor(200);
     await page.click('#submitIndex');
     await page.waitFor(200);
@@ -51,11 +50,15 @@ async function InstanceBrowser() {
     }
     url = await page.$eval('h3 b', el => el.innerHTML); 
     console.log('The URL of your Calendar is :'+url);
-    await HTTP.call('GET', url, (error, result) => {
+    await HTTP.call('GET', url, Meteor.bindEnvironment((error, result) => {
         if (!error) {
             calendar = result.content;
+            console.log(calendar);
+            Calendar.insert({
+                calendar
+            })
         }
-    });
+    }));
     console.log('Finish !');
     try {
         await page.waitFor(200);
