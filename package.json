@@ -2,7 +2,7 @@
   "name": "calendar",
   "private": true,
   "scripts": {
-    "start": "meteor run"
+    "start": "meteor --settings=settings.json"
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.36",
@@ -11,6 +11,7 @@
     "lodash": "^4.17.5",
     "meteor-node-stubs": "^0.3.2",
     "moment": "^2.21.0",
+    "moment-timezone": "^0.5.14",
     "puppeteer": "^1.1.1"
   },
   "devDependencies": {}
