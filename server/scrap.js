@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
-import { HTTP } from 'meteor/http'
+import { HTTP } from 'meteor/http';
+import '../lib/calendar';
 import moment from 'moment';
 import puppeteer from 'puppeteer';
 import devices from 'puppeteer/DeviceDescriptors';
@@ -53,10 +54,17 @@ async function InstanceBrowser() {
     await HTTP.call('GET', url, Meteor.bindEnvironment((error, result) => {
         if (!error) {
             calendar = result.content;
-            // console.log(calendar);
-            Calendar.insert({
-                calendar
-            })
+            let CurrentCalendar = Calendar.find().count();
+            if(CurrentCalendar === 0 && calendar != CurrentCalendar){
+                Meteor.call('Calendar.RemoveAll');
+                Calendar.insert({
+                    calendar
+                })
+                console.log('We parse your data please wait a moment');
+                parseCalendar(Calendar.find().fetch()[0].calendar);
+             } else {
+                 console.log('Your calendar is already up to date ! Gave up Scraping')
+             }
         }
     }));
     console.log('Finish !');
