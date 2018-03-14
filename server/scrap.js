@@ -53,7 +53,7 @@ async function InstanceBrowser() {
     await HTTP.call('GET', url, Meteor.bindEnvironment((error, result) => {
         if (!error) {
             calendar = result.content;
-            console.log(calendar);
+            // console.log(calendar);
             Calendar.insert({
                 calendar
             })
