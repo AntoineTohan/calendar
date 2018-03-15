@@ -7,7 +7,7 @@
 
 <template name="Index">
   {{#if Template.subscriptionsReady}}
-    {{> Template.dynamic template="Data"}}
+    {{> Template.dynamic template=getTemplate}}
   {{else}}
     {{> Loading}}
 {{/if}}

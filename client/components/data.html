@@ -1,12 +1,13 @@
 <template name="Data">
     <h1 class="text-color">Welcome to your Calendar EPSI</h1>
+    <button type="button" class="btn btn-default logout"><span class="glyphicon glyphicon-log-out padding-all" aria-hidden="true">Logout</span></button> 
     <div class="pre-scrollable scrolable-data">
         {{#each courses}}
             <hr>
-            <p class="text-color">{{this.statValue}}</p>
-            <p class="text-color">{{this.endValue}}</p>
-            <p class="text-color">{{this.summaryValue}}</p>
-            <p class="text-color">{{this.descriptionValue}}</p>
+            <p class="text-color">{{this.result.statValue}}</p>
+            <p class="text-color">{{this.result.endValue}}</p>
+            <p class="text-color">{{this.result.summaryValue}}</p>
+            <p class="text-color">{{this.result.descriptionValue}}</p>
         {{/each}}
     </div>
 </template>

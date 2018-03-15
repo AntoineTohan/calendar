@@ -28,3 +28,12 @@ momentjs:moment
 percolate:synced-cron
 fullcalendar:fullcalendar
 insecure
+accounts-password
+accounts-base
+alanning:roles
+useraccounts:bootstrap
+useraccounts:iron-routing
+ongoworks:security
+peppelg:bootstrap-3-modal
+kevohagan:sweetalert
+email
