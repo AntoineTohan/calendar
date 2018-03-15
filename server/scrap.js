@@ -54,15 +54,16 @@ async function InstanceBrowser() {
     await HTTP.call('GET', url, Meteor.bindEnvironment((error, result) => {
         if (!error) {
             calendar = result.content;
-            let CurrentCalendar = Calendar.find().count();
+            let CurrentCalendar = Calendar.find({ owner: Meteor.userId() }).count();
             if(CurrentCalendar === 0 && calendar != CurrentCalendar){
                 Meteor.call('Calendar.RemoveAll');
                 Meteor.call('Courses.RemoveAll');
                 Calendar.insert({
+                    owner: Meteor.userId(),
                     calendar
                 })
                 console.log('We parse your data please wait a moment');
-                parseCalendar(Calendar.find().fetch()[0].calendar);
+                parseCalendar(Calendar.find({ owner: Meteor.userId() }).fetch()[0].calendar);
              } else {
                  console.log('Your calendar is already up to date ! Gave up Scraping')
              }

@@ -7,3 +7,18 @@ Template.Index.onCreated(function () {
   this.subscribe('calendar');
   this.subscribe('courses');
 });
+
+Template.Index.helpers({
+  getTemplate() {
+		if (Meteor.userId()) {
+			return 'Data';
+		} else {
+			return 'atForm';
+		}
+}
+});
+
+Template.Index.onRendered(function () {
+  Meteor.call('Data.getAllData');
+  console.log(1);
+});
