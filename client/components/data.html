@@ -1,0 +1,12 @@
+<template name="Data">
+    <h1 class="text-color">Welcome to your Calendar EPSI</h1>
+    <div class="pre-scrollable scrolable-data">
+        {{#each courses}}
+            <hr>
+            <p class="text-color">{{this.statValue}}</p>
+            <p class="text-color">{{this.endValue}}</p>
+            <p class="text-color">{{this.summaryValue}}</p>
+            <p class="text-color">{{this.descriptionValue}}</p>
+        {{/each}}
+    </div>
+</template>

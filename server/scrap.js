@@ -57,6 +57,7 @@ async function InstanceBrowser() {
             let CurrentCalendar = Calendar.find().count();
             if(CurrentCalendar === 0 && calendar != CurrentCalendar){
                 Meteor.call('Calendar.RemoveAll');
+                Meteor.call('Courses.RemoveAll');
                 Calendar.insert({
                     calendar
                 })

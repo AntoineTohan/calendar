@@ -1,1 +1,25 @@
-/* OVERIRDES ALL BOOTSTRAP CSS CLASSES AND ALL PERSONAL CSS CLASSES  */
+html {
+	min-height: 100%;
+	height: 100%;
+}
+body {
+    content: "";
+	display: block;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	background: url("images/background.jpg") no-repeat center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+.scrolable-data{
+	max-height: 450px!important;
+}
+.text-color{
+	color: white;
+}
