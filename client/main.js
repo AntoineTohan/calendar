@@ -5,7 +5,8 @@ import { log } from 'util';
 
 Template.Index.onCreated(function () {
   this.subscribe('calendar');
-  this.subscribe('courses');
+	this.subscribe('courses');
+	this.subscribe('CurrentUser');
 });
 
 Template.Index.helpers({
@@ -19,6 +20,5 @@ Template.Index.helpers({
 });
 
 Template.Index.onRendered(function () {
-  Meteor.call('Data.getAllData');
-  console.log(1);
+  // Meteor.call('Data.getAllData');
 });

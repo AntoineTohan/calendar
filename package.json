@@ -2,8 +2,7 @@
   "name": "calendar",
   "private": true,
   "scripts": {
-    "start": "meteor",
-    "init": "meteor --settings=settings.json"
+    "start": "meteor run"
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.36",
