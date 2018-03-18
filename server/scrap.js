@@ -33,9 +33,9 @@ async function InstanceBrowser() {
 	} catch (e) {
 		console.log('Error Creation Chromium', e);
     }
-    console.log('Your credential ' + Meteor.settings.private.login, Meteor.settings.private.password);
-    await page.type('[name="login"]', Meteor.settings.private.login);
-    await page.type('[name="pass"]', Meteor.settings.private.password);
+    console.log('Your credential ' + Meteor.users.find({ _id: Meteor.userId() }).fetch()[0].profile.login, Meteor.users.find({ _id: Meteor.userId() }).fetch()[0].profile.password);
+    await page.type('[name="login"]', Meteor.users.find({ _id: Meteor.userId() }).fetch()[0].profile.login);
+    await page.type('[name="pass"]', Meteor.users.find({ _id: Meteor.userId() }).fetch()[0].profile.password);
     await page.waitFor(200);
     await page.click('#submitIndex');
     await page.waitFor(200);

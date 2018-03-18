@@ -1,6 +1,9 @@
 <template name="Data">
+    {{#if hasCredential}}
     <h1 class="text-color">Welcome to your Calendar EPSI</h1>
-    <button type="button" class="btn btn-default logout"><span class="glyphicon glyphicon-log-out padding-all" aria-hidden="true">Logout</span></button> 
+    <button type="button" class="btn btn-default logout"><span class="glyphicon glyphicon-log-out padding-all" aria-hidden="true">Logout</span></button>
+    <button type="button" class="btn btn-default removeCredentials"><span class="glyphicon glyphicon-remove padding-all" aria-hidden="true">Remove my credentials</span></button>
+    <button type="button" class="btn btn-default refreshCalendar"><span class="glyphicon glyphicon-refresh padding-all" aria-hidden="true">Refresh my Calendar</span></button>
     <div class="pre-scrollable scrolable-data">
         {{#each courses}}
             <hr>
@@ -10,4 +13,7 @@
             <p class="text-color">{{this.result.descriptionValue}}</p>
         {{/each}}
     </div>
+    {{else}}
+        <button type="button" class="btn btn-default parent-loading credentials"><span class="glyphicon glyphicon-edit padding-all" aria-hidden="true">Created your credentials</span></button> 
+    {{/if}}
 </template>
