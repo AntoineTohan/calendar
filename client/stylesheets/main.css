@@ -18,10 +18,12 @@ body {
 	background-size: cover;
 }
 .scrolable-data{
-	max-height: 450px!important;
+	max-height: 80%!important;
+	max-width: 100%!important;
 }
 .text-color{
 	color: white;
+	text-align: center
 }
 .at-form {
 	max-width: 600px !important;
@@ -44,3 +46,52 @@ body {
 h3{
 	color: white;
 }
+
+/* OVERIDE CCS CALENDAR */
+
+.calendar{
+	background-color: whitesmoke;
+}
+
+.btn:hover{
+	background-color: white!important;
+}
+
+.fc-time{
+	font-size: 20px!important;
+	text-align: center;
+}
+
+.fc-event {
+	border: 1px solid #d81304!important;
+	background-color: #d81304!important;
+}
+
+.logout{
+	margin-bottom: 25px!important;
+}
+
+.removeCredentials{
+	margin-bottom: 25px!important;
+}
+
+.refreshCalendar{
+	margin-bottom: 25px!important;
+}
+
+.fc-time{
+	margin-top:5px;
+}
+.fc-title{
+	font-size: 14px !important;
+	text-align: center;
+	margin-top: 10px!important;
+}
+
+.removeCourses{
+	margin-bottom: 25px!important;
+}
+
+/* .fc-time-grid-event{
+	cursor: pointer;
+} */

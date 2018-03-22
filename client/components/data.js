@@ -5,6 +5,10 @@ import { log } from 'util';
 
 Modal.allowMultiple = true;
 
+Template.Index.onCreated(function () {
+  Meteor.call('Data.ScrapingFalse');
+});
+ 
 Template.Data.helpers({
   courses() {
     return Courses.find({ owner: Meteor.userId() }).fetch();
@@ -19,7 +23,10 @@ Template.Data.helpers({
       }
     } else return false;
   },
-  });
+  IsScrapping(){
+    return  Meteor.users.find().fetch()[0].profile.Scraping;
+  }
+});
 
 Template.Data.events({
   'click .logout'(event, instance) {
@@ -29,13 +36,18 @@ Template.Data.events({
     Meteor.call('user.CrendentialRemove');
   },
   'click .refreshCalendar'(event, instance) {
+    Meteor.call('Data.ScrapingTrue');
     login = Meteor.users.find().fetch()[0].profile.login;
     password = Meteor.users.find().fetch()[0].profile.password;
     Meteor.call('Data.getAllData');
   },
   'click .credentials'(event, instance) {
     Modal.show('Credentials');
-}
+  },
+  'click .removeCourses'(event, instance) {
+    Meteor.call('Calendar.RemoveAll');
+    Meteor.call('Courses.RemoveAll');
+  }
 });
 
 Template.Data.onRendered(function () {
