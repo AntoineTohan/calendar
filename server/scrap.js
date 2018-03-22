@@ -7,8 +7,25 @@ import devices from 'puppeteer/DeviceDescriptors';
 
 Meteor.methods({
 	'Data.getAllData'() {
-        InstanceBrowser();
+        InstanceBrowser((result) => {
+            Meteor.call('Data.ScrapingFalse');
+            return result;
+        });
     },
+    'Data.ScrapingTrue'(){
+        Meteor.users.update(Meteor.userId(), {
+            $set: {
+                'profile.Scraping': true,
+            }
+        });
+    },
+    'Data.ScrapingFalse'(){
+        Meteor.users.update(Meteor.userId(), {
+            $set: {
+                'profile.Scraping': false,
+            }
+        });
+    }
 });
 
 let page;
@@ -19,7 +36,7 @@ const width = 1200;
 const height = 850;
 const ecampus = 'http://calendrier.montpellier.epsi.fr/';
 
-async function InstanceBrowser() {
+async function InstanceBrowser(callback) {
 	try {
 		browser = await puppeteer.launch({
 			headless: true,
@@ -63,9 +80,11 @@ async function InstanceBrowser() {
                     calendar
                 })
                 console.log('We parse your data please wait a moment');
-                parseCalendar(Calendar.find({ owner: Meteor.userId() }).fetch()[0].calendar);
+                let courses = parseCalendar(Calendar.find({ owner: Meteor.userId() }).fetch()[0].calendar);
+                callback(courses);
              } else {
-                 console.log('Your calendar is already up to date ! Gave up Scraping')
+                 console.log('Your calendar is already up to date ! Gave up Scraping');
+                 callback(null);
              }
         }
     }));
@@ -73,6 +92,7 @@ async function InstanceBrowser() {
     try {
         await page.waitFor(200);
         await browser.close();
+
     } catch (e) {
         console.log('Error when Closing Chromium', e);
     }

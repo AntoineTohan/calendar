@@ -17,7 +17,6 @@ es5-shim@4.7.0                # ECMAScript 5 compatibility for older browsers
 ecmascript@0.10.0              # Enable ECMAScript2015+ syntax in app code
 shell-server@0.3.1            # Server-side component of the `meteor shell` command
 
-twbs:bootstrap
 meteortoys:allthings
 fortawesome:fontawesome
 random
@@ -26,7 +25,6 @@ iron:router
 check
 momentjs:moment
 percolate:synced-cron
-fullcalendar:fullcalendar
 insecure
 accounts-password
 accounts-base
@@ -37,3 +35,5 @@ ongoworks:security
 peppelg:bootstrap-3-modal
 kevohagan:sweetalert
 email
+alexwine:bootstrap-4
+fullcalendar:fullcalendar

@@ -1,18 +1,19 @@
 <template name="Data">
     {{#if hasCredential}}
-    <h1 class="text-color">Welcome to your Calendar EPSI</h1>
-    <button type="button" class="btn btn-default logout"><span class="glyphicon glyphicon-log-out padding-all" aria-hidden="true">Logout</span></button>
-    <button type="button" class="btn btn-default removeCredentials"><span class="glyphicon glyphicon-remove padding-all" aria-hidden="true">Remove my credentials</span></button>
-    <button type="button" class="btn btn-default refreshCalendar"><span class="glyphicon glyphicon-refresh padding-all" aria-hidden="true">Refresh my Calendar</span></button>
-    <div class="pre-scrollable scrolable-data">
-        {{#each courses}}
-            <hr>
-            <p class="text-color">{{this.result.statValue}}</p>
-            <p class="text-color">{{this.result.endValue}}</p>
-            <p class="text-color">{{this.result.summaryValue}}</p>
-            <p class="text-color">{{this.result.descriptionValue}}</p>
-        {{/each}}
-    </div>
+        <h1 class="text-color">Welcome to your Calendar EPSI</h1>
+        <button type="button" class="btn btn-default logout"><i class="fa fa-sign-out"></i> Logout</button>
+        <button type="button" class="btn btn-default removeCredentials"><i class="fa fa-trash"></i> Change my credentials</button>
+        <button type="button" class="btn btn-default removeCourses"><i class="fa fa-trash"></i> Remove Calendar</button>
+        <button type="button" class="btn btn-default refreshCalendar">
+            {{#if IsScrapping}}
+                <i class="fa fa-refresh fa-spin" style="font-size:24px"></i>
+            {{else}}
+                <i class="fa fa-refresh"></i> Refresh my Calendar
+            {{/if}}
+        </button>
+        <div class="pre-scrollable scrolable-data">
+                {{> ecalendar}}
+        </div>
     {{else}}
         <button type="button" class="btn btn-default parent-loading credentials"><span class="glyphicon glyphicon-edit padding-all" aria-hidden="true">Created your credentials</span></button> 
     {{/if}}

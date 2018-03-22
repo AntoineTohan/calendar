@@ -7,7 +7,6 @@ Template.Credentials.helpers({
 Template.Credentials.events({
     'submit #add-credentials'(event, instance) {
         event.preventDefault();
-        console.log(event.target);
         if (!!event.target[0].value && !!event.target[1].value) {
             const login = event.target[0].value;
             const password = event.target[1].value;
